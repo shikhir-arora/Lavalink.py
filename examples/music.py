@@ -150,7 +150,7 @@ class Music:
 
         queue_list = ''
 
-        for i, track in enumerate(player.queue[start:end], start=start):
+        for i, track in enumerate(list(player.queue)[start:end], start=start): 
             queue_list += f'`{i + 1}.` [**{track.title}**]({track.uri})\n'
 
         embed = discord.Embed(colour=ctx.guild.me.top_role.colour,
@@ -182,16 +182,16 @@ class Music:
         await player.set_volume(volume)
         await ctx.send(f'🔈 | Set to {player.volume}%')
 
-    @commands.command()
-    async def shuffle(self, ctx):
-        player = self.bot.lavalink.players.get(ctx.guild.id)
+  #  @commands.command()
+  #  async def shuffle(self, ctx):
+  #      player = self.bot.lavalink.players.get(ctx.guild.id)
 
-        if not player.is_playing:
-            return await ctx.send('Nothing playing.')
+       # if not player.is_playing:
+       #     return await ctx.send('Nothing playing.')
 
-        player.shuffle = not player.shuffle
+       # player.shuffle = not player.shuffle
 
-        await ctx.send('🔀 | Shuffle ' + ('enabled' if player.shuffle else 'disabled'))
+       # await ctx.send('🔀 | Shuffle ' + ('enabled' if player.shuffle else 'disabled'))
 
     @commands.command()
     async def repeat(self, ctx):
