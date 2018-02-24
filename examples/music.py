@@ -217,7 +217,7 @@ class Music:
             return await ctx.send('Index has to be >=1 and <=queue size')
 
         index = index - 1
-        removed = player.queue.pop(index)
+        removed = list(player.queue).pop(index)
 
         await ctx.send('Removed **' + removed.title + '** from the queue.')
 
